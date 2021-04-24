@@ -1,0 +1,14 @@
+#create resource group at a specific location
+az group create -n webapps-dev-rg -l westus2 
+
+#create a service plan for the above rg and mention the os and plan
+az appservice plan create --name webapps-dev-plan \
+   --resource-group webapps-dev-rg \
+   --sku s1 \
+   --is-linux
+
+#create a webapp for the above plan  
+az webapp create -g webapps-dev-rg \
+   -p webapps-dev-plan \
+   -n webappName \
+   --runtime "node|10..4"
