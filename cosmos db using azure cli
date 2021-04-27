@@ -1,0 +1,8 @@
+#create an sql api cosmos DB account
+az cosmosdb create --name pluralsight --resource-group pluralsight
+
+#create an sql database
+az cosmosdb sql database create --account-name pluralsight --name sampledb
+
+#create a sql db container
+az cosmosdb sql container create --resource-group pluralsight --account-name pluralsight --database-name sampledb --name samplecontainer --partition-key-path "/employeeid"
